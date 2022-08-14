@@ -21,49 +21,40 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
         width: 300,
-        backgroundColor: Colors.orange[100],
+        backgroundColor: Colors.orangeAccent,
         child: ListView(
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.deepPurple,
+              child: Image(
+                image: AssetImage("images/home-removebg-preview.png"),
               ),
-              child: Icon(Icons.person),
             ),
             ListTile(
-              title: Text("list 1",
-                  style: TextStyle(
-                    color: Colors.purple,
-                  )),
-              subtitle: Text("list 1",
-                  style: TextStyle(
-                    color: Colors.purple,
-                  )),
-              leading: Icon(Icons.format_list_bulleted),
+              title: Text(
+                "vegetarian pizza",
+              ),
+              leading: Image(
+                image:
+                    AssetImage("images/vegetarian-pizza-removebg-preview.png"),
+              ),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
             ListTile(
-              title: Text("list 2",
-                  style: TextStyle(
-                    color: Colors.purple,
-                  )),
-              subtitle: Text("list 2",
-                  style: TextStyle(
-                    color: Colors.purple,
-                  )),
-              leading: Icon(Icons.format_list_bulleted),
+              title: Text(
+                "Cheese pizza",
+              ),
+              leading: Image(
+                image: AssetImage("images/cheese-pizza--removebg-preview.png"),
+              ),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
             ListTile(
-              title: Text("list 3",
-                  style: TextStyle(
-                    color: Colors.purple,
-                  )),
-              subtitle: Text("list 3",
-                  style: TextStyle(
-                    color: Colors.purple,
-                  )),
-              leading: Icon(Icons.format_list_bulleted),
+              title: Text(
+                "Fries",
+              ),
+              leading: Image(
+                image: AssetImage("images/Fries-removebg-preview.png"),
+              ),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
           ],
@@ -73,12 +64,21 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             ButtonBar(
-              children: [
-                Image(
-                  image: AssetImage("images/home-removebg-preview.png"),
-                )
-              ],
-            )
+              children: [],
+            ),
+            Image(
+              image: AssetImage("images/home-removebg-preview.png")
+              ,width: 400,
+              height: 400,
+            ),
+            Text(
+              "Hi,I'm the Pizza Assistantn,",
+              style: TextStyle(fontSize: 30),
+            ),
+            Text(
+              "what can I help you order?",
+              style: TextStyle(fontSize: 30),
+            ),
           ],
         ),
       ),
