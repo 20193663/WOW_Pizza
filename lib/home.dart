@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
         width: 300,
-        backgroundColor: Colors.orangeAccent,
+        //backgroundColor: Colors.orangeAccent,
         child: ListView(
           children: [
             DrawerHeader(
@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     AssetImage("images/vegetarian-pizza-removebg-preview.png"),
               ),
               trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () => Navigator.pushNamed(context, "1"),
             ),
             ListTile(
               title: Text(
@@ -47,15 +48,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 image: AssetImage("images/cheese-pizza--removebg-preview.png"),
               ),
               trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () => Navigator.pushNamed(context, "2"),
             ),
             ListTile(
               title: Text(
-                "Fries",
+                "French fries",
               ),
               leading: Image(
                 image: AssetImage("images/Fries-removebg-preview.png"),
               ),
               trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () => Navigator.pushNamed(context, "3"),
             ),
           ],
         ),
@@ -64,12 +67,53 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             ButtonBar(
-              children: [],
+              alignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () => Navigator.pushNamed(context, "1"),
+                  child: Text(
+                    "vegetarian pizza",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(StadiumBorder()),
+                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pushNamed(context, "2"),
+                  child: Text(
+                    "Cheese pizza",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(StadiumBorder()),
+                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pushNamed(context, "3"),
+                  child: Text(
+                    "French fries",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(StadiumBorder()),
+                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
+                  ),
+                ),
+              ],
             ),
             Image(
-              image: AssetImage("images/home-removebg-preview.png")
-              ,width: 400,
-              height: 400,
+              image: AssetImage("images/home-removebg-preview.png"),
+              width: 300,
+              height: 300,
             ),
             Text(
               "Hi,I'm the Pizza Assistantn,",

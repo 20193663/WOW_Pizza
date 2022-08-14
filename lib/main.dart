@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
         '1':(context)=>MyHomePage(),
         '2':(context)=>MyHomePage(),
         '3':(context)=>MyHomePage(),
+        '4':(context)=>MyHomePage(),
+        '5':(context)=>MyHomePage(),
       }, //routes
     );
   }
