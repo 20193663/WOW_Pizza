@@ -1,17 +1,28 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
+class Instagram extends StatefulWidget {
+  const Instagram({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Instagram> createState() => _InstagramState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _index = 0;
+class _InstagramState extends State<Instagram> {
+  int _index = 2;
+  //webapp settings
+  var loadingPercentage = 0;
+  @override
+  void initState() {
+    super.initState();
+    // Enable virtual display.
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               leading: Image(
                 image:
-                    AssetImage("images/vegetarian-pizza-removebg-preview.png"),
+                AssetImage("images/vegetarian-pizza-removebg-preview.png"),
               ),
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () => Navigator.pushNamed(context, "1"),
@@ -63,69 +74,33 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            ButtonBar(
-              alignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () => Navigator.pushNamed(context, "1"),
-                  child: Text(
-                    "vegetarian pizza",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(StadiumBorder()),
-                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pushNamed(context, "2"),
-                  child: Text(
-                    "Cheese pizza",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(StadiumBorder()),
-                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pushNamed(context, "3"),
-                  child: Text(
-                    "French fries",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(StadiumBorder()),
-                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
-                  ),
-                ),
-              ],
-            ),
-            Image(
-              image: AssetImage("images/home-removebg-preview.png"),
-              width: 300,
-              height: 300,
-            ),
-            Text(
-              "Hi,I'm the Pizza Assistantn,",
-              style: TextStyle(fontSize: 30),
-            ),
-            Text(
-              "what can I help you order?",
-              style: TextStyle(fontSize: 30),
-            ),
-          ],
+      body: Stack(children: [
+        WebView(
+          initialUrl: 'https://www.instagram.com/',
+          javascriptMode: JavascriptMode.unrestricted,
+          onPageStarted: (url) {
+            setState(() {
+              loadingPercentage = 0;
+            });
+          },
+          onProgress: (progress) {
+            setState(() {
+              loadingPercentage = progress;
+            });
+          },
+          onPageFinished: (url) {
+            setState(() {
+              loadingPercentage = 100;
+            });
+          },
         ),
-      ),
+        if (loadingPercentage < 100)
+          LinearProgressIndicator(
+            value: loadingPercentage / 100.0,
+            minHeight: 10,
+            color: Colors.red,
+          ),
+      ]),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _index,
         unselectedItemColor: Colors.black,
@@ -133,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.orange,
         onTap: (int index) {
           setState(
-            () {
+                () {
               _index = index;
               //Navigator.push(context, MaterialPageRoute(builder: (context)=> const  setting()));
               if (index == 0) {

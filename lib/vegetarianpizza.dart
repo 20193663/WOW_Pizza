@@ -1,16 +1,16 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
+class vegetarianpizza extends StatefulWidget {
+  const vegetarianpizza({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<vegetarianpizza> createState() => _vegetarianpizzaState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _vegetarianpizzaState extends State<vegetarianpizza> {
   int _index = 0;
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(StadiumBorder()),
-                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.deepOrange),
                   ),
                 ),
                 TextButton(
@@ -92,7 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(StadiumBorder()),
-                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.deepOrange),
                   ),
                 ),
                 TextButton(
@@ -105,23 +107,50 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(StadiumBorder()),
-                    backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.deepOrange),
                   ),
                 ),
               ],
             ),
+            Center(
+              child: Text(
+                "Vegetarian pizza",
+                style: TextStyle(fontSize: 30),
+              ),
+            ),
             Image(
-              image: AssetImage("images/home-removebg-preview.png"),
+              image: AssetImage("images/vegetarian-pizza-removebg-preview.png"),
               width: 300,
               height: 300,
             ),
-            Text(
-              "Hi,I'm the Pizza Assistantn,",
-              style: TextStyle(fontSize: 30),
-            ),
-            Text(
-              "what can I help you order?",
-              style: TextStyle(fontSize: 30),
+            Center(
+              child: Container(
+                child: DataTable(
+                  columns: [
+                    DataColumn(
+                      label: Text("Size"),
+                    ),
+                    DataColumn(
+                      label: Text("Price"),
+                    ),
+                  ],
+                  rows: [
+                    DataRow(cells: [
+                      DataCell(Text("S")),
+                      DataCell(Text("20")),
+                    ]),
+                    DataRow(cells: [
+                      DataCell(Text("M")),
+                      DataCell(Text("50")),
+                    ]),
+                    DataRow(cells: [
+                      DataCell(Text("L")),
+                      DataCell(Text("80")),
+                    ]),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
