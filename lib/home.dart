@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ButtonBar(
               children: [
                 Image(
-                  image: AssetImage("images/home.png"),
+                  image: AssetImage("images/home-removebg-preview.png"),
                 )
               ],
             )
@@ -84,7 +84,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _index,
-        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.white,
+        backgroundColor: Colors.orange,
         onTap: (int index) {
           setState(
             () {
